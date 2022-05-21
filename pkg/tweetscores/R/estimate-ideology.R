@@ -59,7 +59,8 @@ estimateIdeology <- function(user, friends, verbose=TRUE, method="MCMC",
   y <- tweetscores::posterior_samples$id %in% friends
   # info message
   if (sum(y)==0){
-    stop("User follows 0 elites!")
+    print("User follows 0 elites!")
+    return(NULL)
   }
   message(user, " follows ", sum(y), " elites: ",
       paste(tweetscores::posterior_samples$screen_name[
